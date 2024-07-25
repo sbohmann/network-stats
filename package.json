@@ -1,0 +1,12 @@
+{
+  "name": "network-stats",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "run": "node networkstats.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
