@@ -58,7 +58,7 @@ function handleReceivedPacket() {
         if (lastReportTimestamp === null) {
             report(now)
             setInterval(() => report(Date.now()),
-                1_000)
+                10_000)
         }
     }
     lastPacketTimestamp = now
