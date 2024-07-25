@@ -28,6 +28,12 @@ let totalTimeBetweenPackets = 0
 let minimumTimeBetweenPackets = null
 let averageTimeBetweenPackets = null
 let maximumTimeBetweenPackets = null
+let numberOfPacketsGreaterThan100MsOverAverage = 0
+let numberOfPacketsGreaterThan150MsOverAverage = 0
+let numberOfPacketsGreaterThan200MsOverAverage = 0
+let numberOfPacketsGreaterThan300MsOverAverage = 0
+let numberOfPacketsGreaterThan500MsOverAverage = 0
+let numberOfPacketsGreaterThanHalfOverAverage = 0
 let numberOfPacketsGreaterThanTwiceAverage = 0
 
 let lastReportTimestamp = null
@@ -50,6 +56,24 @@ function handleReceivedPacket() {
             if (deltaT > maximumTimeBetweenPackets) {
                 maximumTimeBetweenPackets = deltaT
             }
+        }
+        if (deltaT > averageTimeBetweenPackets + 100) {
+            ++numberOfPacketsGreaterThan100MsOverAverage
+        }
+        if (deltaT > averageTimeBetweenPackets + 150) {
+            ++numberOfPacketsGreaterThan150MsOverAverage
+        }
+        if (deltaT > averageTimeBetweenPackets + 200) {
+            ++numberOfPacketsGreaterThan200MsOverAverage
+        }
+        if (deltaT > averageTimeBetweenPackets + 300) {
+            ++numberOfPacketsGreaterThan300MsOverAverage
+        }
+        if (deltaT > averageTimeBetweenPackets + 500) {
+            ++numberOfPacketsGreaterThan500MsOverAverage
+        }
+        if (deltaT > 1.5 * averageTimeBetweenPackets) {
+            ++numberOfPacketsGreaterThanHalfOverAverage
         }
         if (deltaT > 2 * averageTimeBetweenPackets) {
             ++numberOfPacketsGreaterThanTwiceAverage
@@ -74,5 +98,11 @@ function report(now) {
     console.log('minimumTimeBetweenPackets:', minimumTimeBetweenPackets)
     console.log('averageTimeBetweenPackets:', averageTimeBetweenPackets)
     console.log('maximumTimeBetweenPackets:', maximumTimeBetweenPackets)
+    console.log('numberOfPacketsGreaterThan100MsOverAverage:', numberOfPacketsGreaterThan100MsOverAverage)
+    console.log('numberOfPacketsGreaterThan150MsOverAverage:', numberOfPacketsGreaterThan150MsOverAverage)
+    console.log('numberOfPacketsGreaterThan200MsOverAverage:', numberOfPacketsGreaterThan200MsOverAverage)
+    console.log('numberOfPacketsGreaterThan300MsOverAverage:', numberOfPacketsGreaterThan300MsOverAverage)
+    console.log('numberOfPacketsGreaterThan500MsOverAverage:', numberOfPacketsGreaterThan500MsOverAverage)
+    console.log('numberOfPacketsGreaterThanHalfOverAverage:', numberOfPacketsGreaterThanHalfOverAverage)
     console.log('numberOfPacketsGreaterThanTwiceAverage:', numberOfPacketsGreaterThanTwiceAverage)
 }
