@@ -66,6 +66,7 @@ function handleReceivedPacket() {
 
 function report(now) {
     lastReportTimestamp = now
+    console.log(`\n\n`)
     console.clear()
     console.log('lastPacketTimestamp:', lastPacketTimestamp)
     console.log('numberOfPacketsReceived:', numberOfPacketsReceived)
